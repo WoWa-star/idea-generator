@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idea Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        button { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
+        #idea { margin-top: 20px; font-size: 18px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Random Idea Generator</h1>
+    <button onclick="generateIdea()">Generate Idea</button>
+    <p id="idea">Click the button to get an idea!</p>
+
+    <script>
+        const ideas = [
+            "Create an AI-powered art generator",
+            "Develop a website for sharing unique experiences",
+            "Make a mobile app for daily creative challenges",
+            "Start a blog about futuristic technology",
+            "Build an online shop for handcrafted items"
+        ];
+
+        function generateIdea() {
+            const randomIndex = Math.floor(Math.random() * ideas.length);
+            document.getElementById("idea").innerText = ideas[randomIndex];
+        }
+    </script>
+</body>
+</html>
