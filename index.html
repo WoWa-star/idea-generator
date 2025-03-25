@@ -1,32 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idea Generator</title>
+    <title>Генератор Идей</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-        button { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
-        #idea { margin-top: 20px; font-size: 18px; font-weight: bold; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-top: 50px;
+        }
+
+        #ideaBox {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .filter {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .filter button {
+            background-color: #2196F3;
+        }
+
+        .filter button:hover {
+            background-color: #1976D2;
+        }
     </style>
 </head>
 <body>
-    <h1>Random Idea Generator</h1>
-    <button onclick="generateIdea()">Generate Idea</button>
-    <p id="idea">Click the button to get an idea!</p>
+    <h1>Генератор Идей для Бизнеса</h1>
+    
+    <div class="filter">
+        <button onclick="filterIdeas('business')">Бизнес</button>
+        <button onclick="filterIdeas('art')">Искусство</button>
+        <button onclick="filterIdeas('tech')">Технологии</button>
+    </div>
+
+    <div id="ideaBox">
+        <h2>Нажми, чтобы получить идею!</h2>
+        <p id="ideaText">Идея появится здесь.</p>
+        <button onclick="generateIdea()">Получить Идею</button>
+    </div>
 
     <script>
-        const ideas = [
-            "Create an AI-powered art generator",
-            "Develop a website for sharing unique experiences",
-            "Make a mobile app for daily creative challenges",
-            "Start a blog about futuristic technology",
-            "Build an online shop for handcrafted items"
-        ];
+        const ideas = {
+            business: [
+                "Открой кафе на колесах",
+                "Разработка онлайн-курсов по бизнесу",
+                "Интернет-магазин с уникальными товарами"
+            ],
+            art: [
+                "Галерея уличного искусства",
+                "Мастер-классы по живописи",
+                "Разработка онлайн-школы для художников"
+            ],
+            tech: [
+                "Приложение для здоровья и фитнеса",
+                "Разработка VR-игры",
+                "Платформа для искусственного интеллекта"
+            ]
+        };
+
+        let filteredIdeas = ideas.business; // Default filter
 
         function generateIdea() {
-            const randomIndex = Math.floor(Math.random() * ideas.length);
-            document.getElementById("idea").innerText = ideas[randomIndex];
+            const randomIndex = Math.floor(Math.random() * filteredIdeas.length);
+            const idea = filteredIdeas[randomIndex];
+            document.getElementById('ideaText').innerText = idea;
+        }
+
+        function filterIdeas(category) {
+            filteredIdeas = ideas[category];
+            generateIdea();
         }
     </script>
 </body>
